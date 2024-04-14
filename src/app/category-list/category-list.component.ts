@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TaskCreateModalComponent } from '../task-create-modal/task-create-modal.component'; 
-import { TaskUpdateModalComponent } from '../task-update-modal/task-update-modal.component'; 
+import { TaskCreateModalComponent } from '../task-create-modal/task-create-modal.component';
+import { TaskUpdateModalComponent } from '../task-update-modal/task-update-modal.component';
 
 @Component({
   selector: 'app-category-list',
@@ -11,7 +11,8 @@ import { TaskUpdateModalComponent } from '../task-update-modal/task-update-modal
   styleUrl: './category-list.component.css'
 })
 export class CategoryListComponent implements OnInit {
-  categories: any[]; 
+  @Input() categories: any[]; // Declare categories input property
+
 
   constructor(private http: HttpClient ,private modalService: NgbModal) { }
 
@@ -25,7 +26,7 @@ export class CategoryListComponent implements OnInit {
         this.categories = response;
       });
   }
-  
+
   deleteCategory(id: number){
     this.http.delete<any>('http://localhost:8080/taskCategory/'+ id)
     .subscribe(response => {
@@ -35,15 +36,15 @@ export class CategoryListComponent implements OnInit {
       // Handle error
     });
   }
-  
+
   openTaskCreateModal(category: any) {
-    const modalRef = this.modalService.open(TaskCreateModalComponent ); 
+    const modalRef = this.modalService.open(TaskCreateModalComponent );
     modalRef.componentInstance.category = category;
     modalRef.componentInstance.taskCreated.subscribe(newTask => {
       this.getCategories();
       modalRef.close();
     });
-    
+
   }
 
   deleteTask(id: number){
@@ -58,15 +59,15 @@ export class CategoryListComponent implements OnInit {
 
   openTaskUpdateModal(task: any) {
 
-    const modalRef = this.modalService.open(TaskUpdateModalComponent ); 
+    const modalRef = this.modalService.open(TaskUpdateModalComponent );
     modalRef.componentInstance.task = task;
     modalRef.componentInstance.taskUpdated.subscribe(newTask => {
       this.getCategories();
       modalRef.close();
     });
-   
+
   }
-  
-  
+
+
   }
 

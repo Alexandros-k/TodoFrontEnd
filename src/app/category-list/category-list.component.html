@@ -1,0 +1,55 @@
+<table>
+  <thead>
+   
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let category of categories">
+      <tr>
+        <th>Category Name</th>
+        <th>Description</th>
+        <th>Actions</th> <!-- Add a new column for actions -->
+      </tr>
+      <tr>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td>
+          {{ categoryId }}
+          <!-- Buttons for actions -->
+          <button  (click)="openTaskCreateModal(category)">Create Task</button>
+          <button (click)="deleteCategory(category.id)">Delete Category</button>
+          <button (click)="updateCategory(category)">Update Category</button>
+        </td>
+      </tr>
+      <!-- Table for tasks -->
+      <tr>
+        <td colspan="3">
+          <table>
+            <thead>
+              <tr>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Actions</th> <!-- New column for task actions -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of category.tasks">
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>
+                  
+                  <!-- Buttons for task actions -->
+                  <button (click)="deleteTask(task.id)">Delete</button>
+                  <button (click)="openTaskUpdateModal({task})">Update</button>
+                  
+                </td>
+                <!-- Add more table cells for other task details -->
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

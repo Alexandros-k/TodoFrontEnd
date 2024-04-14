@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+      <mat-label  for="categoryName">Category Name:</mat-label>
+      <input matInput type="text" id="categoryName" name="categoryName" [(ngModel)]="categoryName">
+  </div>
+  <div>
+    <label for="categoryDescription">Category Description:</label>
+    <input type="text" id="categoryDescription" name="categoryDescription" [(ngModel)]="categoryDescription">
+  </div>
+  <button mat-flat-button color="primary" type="submit">Create Category</button>
+</form>
+<app-category-list></app-category-list>

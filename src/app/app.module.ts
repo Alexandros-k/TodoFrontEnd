@@ -14,8 +14,6 @@ import {MatTableModule} from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { TaskDetailsComponent } from './task-details/task-details.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TaskCreateModalComponent } from './task-create-modal/task-create-modal.component';
@@ -30,8 +28,6 @@ import {MatDividerModule} from '@angular/material/divider';
     AppComponent,
     CategoryListComponent,
     CategoryDetailsComponent,
-    TaskListComponent,
-    TaskDetailsComponent,
     CategoryFormComponent,
     TaskCreateModalComponent,
     TaskUpdateModalComponent,

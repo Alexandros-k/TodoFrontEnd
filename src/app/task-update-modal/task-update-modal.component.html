@@ -3,7 +3,7 @@
     <label for="taskName">Name:</label>
     <input type="text" id="taskName" [(ngModel)]="taskName">
     <label for="taskDescription">Description:</label>
-    <textarea id="taskDescription" [(ngModel)]="taskDescription"></textarea>
+    <input id="taskDescription" [(ngModel)]="taskDescription">
     <label for="taskDueDate">Due Date:</label>
     <input type="date" id="taskDueDate" [(ngModel)]="taskDueDate">
     <button (click)="updateTask()">Save</button>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output,Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,32 +8,30 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskUpdateModalComponent {
   @Output() taskUpdated = new EventEmitter<any>();
-  @Input() task: any; 
-  
+  @Input() task: any;
+
     taskName: string = '';
     taskDescription: string = '';
     taskDueDate: string;
-  
+
     constructor(private http: HttpClient) {}
-  
+
     ngOnInit() {
      }
-  
+
     updateTask() {
       const newTask = {
         id: this.task.id,
         name: this.taskName,
         description: this.taskDescription,
-        dueDate: this.taskDueDate,
+        deadline: new Date(this.taskDueDate),
       };
-      
+
       this.http.put<any>('http://localhost:8080/task/'+ this.task.task.id, newTask)
         .subscribe(response => {
-          
           this.taskUpdated.emit(response);
         }, error => {
           console.error('Error updating task:', error);
-
         });
     }
 }

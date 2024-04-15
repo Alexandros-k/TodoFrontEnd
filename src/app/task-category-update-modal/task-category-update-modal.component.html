@@ -1,5 +1,8 @@
 <div class="modal">
-  <h2>Create Task</h2>
-  <!-- Add your form fields here -->
-  <button (click)="close()">Close</button>
+  <h2>Update Category</h2>
+    <label for="categoryName">Name:</label>
+    <input type="text" id="categoryName" [(ngModel)]="categoryName">
+    <label for="categoryDescription">Description:</label>
+    <input id="categoryDescription" [(ngModel)]="categoryDescription">
+    <button (click)="updateCategory()">Save</button>
 </div>
